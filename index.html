@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Biosyn Genetics // Secure Terminal</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #232f48 1px, transparent 1px), linear-gradient(to bottom, #232f48 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scan-line': 'scan 3s linear infinite',
+                        'glitch': 'glitch 1s linear infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100vh)' },
+                        },
+                        glitch: {
+                            '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                            '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                            '62%': { transform: 'translate(0,0) skew(5deg)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Glitch Effect for Title */
+        .glitch-text {
+            position: relative;
+        }
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #101622;
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -1px 0 #00fff9;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(38px, 9999px, 84px, 0); transform: skew(0.6deg); }
+            5% { clip: rect(25px, 9999px, 96px, 0); transform: skew(0.6deg); }
+            10% { clip: rect(51px, 9999px, 12px, 0); transform: skew(0.25deg); }
+            15% { clip: rect(3px, 9999px, 54px, 0); transform: skew(0.04deg); }
+            20% { clip: rect(48px, 9999px, 82px, 0); transform: skew(0.53deg); }
+            25% { clip: rect(76px, 9999px, 94px, 0); transform: skew(0.24deg); }
+            30% { clip: rect(27px, 9999px, 20px, 0); transform: skew(0.85deg); }
+            35% { clip: rect(73px, 9999px, 49px, 0); transform: skew(0.25deg); }
+            40% { clip: rect(37px, 9999px, 7px, 0); transform: skew(0.06deg); }
+            45% { clip: rect(56px, 9999px, 83px, 0); transform: skew(0.81deg); }
+            50% { clip: rect(93px, 9999px, 5px, 0); transform: skew(0.12deg); }
+            55% { clip: rect(23px, 9999px, 73px, 0); transform: skew(0.55deg); }
+            60% { clip: rect(8px, 9999px, 42px, 0); transform: skew(0.99deg); }
+            65% { clip: rect(61px, 9999px, 58px, 0); transform: skew(0.93deg); }
+            70% { clip: rect(29px, 9999px, 3px, 0); transform: skew(0.59deg); }
+            75% { clip: rect(45px, 9999px, 78px, 0); transform: skew(0.52deg); }
+            80% { clip: rect(21px, 9999px, 16px, 0); transform: skew(0.08deg); }
+            85% { clip: rect(9px, 9999px, 92px, 0); transform: skew(0.59deg); }
+            90% { clip: rect(76px, 9999px, 24px, 0); transform: skew(0.64deg); }
+            95% { clip: rect(5px, 9999px, 34px, 0); transform: skew(0.81deg); }
+            100% { clip: rect(68px, 9999px, 66px, 0); transform: skew(0.24deg); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(56px, 9999px, 98px, 0); transform: skew(0.84deg); }
+            5% { clip: rect(10px, 9999px, 4px, 0); transform: skew(0.66deg); }
+            10% { clip: rect(74px, 9999px, 14px, 0); transform: skew(0.87deg); }
+            15% { clip: rect(23px, 9999px, 92px, 0); transform: skew(0.61deg); }
+            20% { clip: rect(18px, 9999px, 88px, 0); transform: skew(0.72deg); }
+            25% { clip: rect(67px, 9999px, 12px, 0); transform: skew(0.03deg); }
+            30% { clip: rect(87px, 9999px, 46px, 0); transform: skew(0.73deg); }
+            35% { clip: rect(1px, 9999px, 72px, 0); transform: skew(0.28deg); }
+            40% { clip: rect(45px, 9999px, 80px, 0); transform: skew(0.39deg); }
+            45% { clip: rect(32px, 9999px, 89px, 0); transform: skew(0.12deg); }
+            50% { clip: rect(21px, 9999px, 63px, 0); transform: skew(0.78deg); }
+            55% { clip: rect(94px, 9999px, 31px, 0); transform: skew(0.95deg); }
+            60% { clip: rect(59px, 9999px, 13px, 0); transform: skew(0.52deg); }
+            65% { clip: rect(4px, 9999px, 85px, 0); transform: skew(0.15deg); }
+            70% { clip: rect(52px, 9999px, 5px, 0); transform: skew(0.43deg); }
+            75% { clip: rect(83px, 9999px, 70px, 0); transform: skew(0.09deg); }
+            80% { clip: rect(41px, 9999px, 49px, 0); transform: skew(0.11deg); }
+            85% { clip: rect(15px, 9999px, 36px, 0); transform: skew(0.69deg); }
+            90% { clip: rect(28px, 9999px, 97px, 0); transform: skew(0.35deg); }
+            95% { clip: rect(65px, 9999px, 20px, 0); transform: skew(0.48deg); }
+            100% { clip: rect(98px, 9999px, 50px, 0); transform: skew(0.77deg); }
+        }
+
+        /* Scanline Overlay */
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.2) 50%,
+                rgba(0,0,0,0.2)
+            );
+            background-size: 100% 4px;
+            position: absolute;
+            pointer-events: none;
+            inset: 0;
+            z-index: 10;
+        }
+
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+        }
+        
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            50% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display overflow-hidden select-none">
+<!-- Background Elements -->
+<div class="fixed inset-0 z-0 bg-background-dark">
+<!-- Abstract DNA / Grid Background -->
+<div class="absolute inset-0 bg-grid-pattern opacity-10 bg-[length:40px_40px]"></div>
+<div class="absolute inset-0 opacity-40">
+<div class="absolute inset-0 bg-cover bg-center mix-blend-overlay" data-alt="Abstract dark hexagons and geometric biological shapes representing a database" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvj8q8dIihI_aMtDNUN6E-h2BrcsKi-gt9RhCBRf6zoLO-FyzQozwbs2UInYOPs8QbjH9xa8hrbQ1QSRZXhFdFFtGPGkybFg2Kr4j8qa2JUtF1eAQcHbe-zs-__hN6BP0EvAzHA5e8cYfi-BRyxw6ec9bvsIlMwlF1kq51--uf-PI33CHlAWlflSuPh_AJGaRizavelsn0_Z0ohXuw1tU1YP9sbnX1HZnJgw_ovSKCdenXVct_81Geb2SGxUkB1tqqfo-1oFqBRLo");'></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark/80 via-transparent to-background-dark/80"></div>
+<!-- Scanline overlay for retro-tech feel -->
+<div class="scanlines opacity-20"></div>
+<!-- Scanning Laser Beam Animation -->
+<div class="absolute top-0 w-full h-1 bg-primary/20 shadow-[0_0_20px_rgba(19,91,236,0.5)] animate-scan-line z-0"></div>
+</div>
+<!-- Main Content Wrapper -->
+<div class="relative z-10 flex flex-col h-screen w-full crt-flicker">
+<!-- Top Navigation / Header -->
+<header class="flex items-center justify-between border-b border-[#232f48] bg-[#111722]/80 backdrop-blur-sm px-6 py-3 w-full border-t-4 border-t-primary">
+<div class="flex items-center gap-4">
+<div class="text-primary animate-pulse">
+<span class="material-symbols-outlined" style="font-size: 28px;">genetics</span>
+</div>
+<div class="flex flex-col">
+<h2 class="text-white text-lg font-bold tracking-wider leading-none">BIOSYN GENETICS</h2>
+<span class="text-[10px] text-primary/80 tracking-[0.2em] font-mono mt-1">SECURE TERMINAL V.9.0.2</span>
+</div>
+</div>
+<div class="flex gap-3 items-center">
+<!-- Live Clock / Coordinates -->
+<div class="hidden md:flex flex-col items-end mr-4 font-mono text-xs text-[#92a4c9]">
+<span>LAT: 34.0522 N</span>
+<span>LNG: 118.2437 W</span>
+</div>
+<div class="flex items-center gap-2 bg-[#232f48] rounded px-3 py-1.5 border border-primary/30 shadow-[0_0_10px_rgba(19,91,236,0.1)]">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+</span>
+<span class="text-xs font-bold tracking-widest text-red-100">STATUS: LOCKED</span>
+</div>
+<div class="flex items-center justify-center bg-[#232f48] rounded p-1.5 border border-[#3e4c66] text-[#92a4c9]">
+<span class="material-symbols-outlined text-sm">lock</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col items-center justify-center p-6 relative w-full max-w-[1400px] mx-auto">
+<!-- Floating Decorative Elements -->
+<div class="absolute top-10 left-10 hidden lg:block opacity-50">
+<div class="border-l border-t border-[#3e4c66] w-16 h-16"></div>
+<div class="font-mono text-[10px] text-[#92a4c9] mt-2 ml-2">
+                    SYS_CHK: OK<br/>
+                    MEM_ALL: 98%<br/>
+                    NET_SPD: 10GB
+                 </div>
+</div>
+<div class="absolute bottom-40 right-10 hidden lg:block opacity-50 text-right">
+<div class="border-r border-b border-[#3e4c66] w-16 h-16 ml-auto"></div>
+<div class="font-mono text-[10px] text-[#92a4c9] mb-2 mr-2">
+                    PROXY: SECURE<br/>
+                    NODE: #4492-A
+                 </div>
+</div>
+<!-- Central Login Card -->
+<div class="flex flex-col items-center justify-center gap-10 w-full max-w-2xl mx-auto z-20">
+<!-- Title Section -->
+<div class="flex flex-col gap-2 text-center relative group cursor-default">
+<div class="flex justify-center mb-4">
+<span class="material-symbols-outlined text-red-500 text-6xl opacity-80 mb-2">warning</span>
+</div>
+<h1 class="glitch-text text-5xl md:text-7xl font-black tracking-[-0.05em] text-white uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" data-text="SYSTEM RESTRICTED">
+                        SYSTEM RESTRICTED
+                    </h1>
+<h2 class="text-primary text-sm md:text-base font-mono tracking-[0.3em] uppercase opacity-80 mt-2">
+                        Biological Asset Database // Level 5 Clearance
+                    </h2>
+</div>
+<!-- Interactive Button Area -->
+<div class="relative group mt-8">
+<!-- Decor borders for button -->
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-[#00d2ff] rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+<button class="relative flex items-center justify-center gap-4 bg-[#101622] hover:bg-primary border border-primary/50 hover:border-primary text-white text-lg md:text-xl font-bold tracking-[0.1em] px-12 py-5 rounded-lg overflow-hidden transition-all duration-300 w-full md:w-auto min-w-[300px] group-hover:shadow-[0_0_40px_rgba(19,91,236,0.6)] group-hover:text-white">
+<!-- Hover scan effect inside button -->
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1s_infinite] w-1/2 h-full skew-x-12 z-0"></div>
+<span class="material-symbols-outlined z-10 transition-transform group-hover:scale-110">fingerprint</span>
+<span class="z-10 relative">ACESSO AUTORIZADO</span>
+<span class="material-symbols-outlined z-10 opacity-0 group-hover:opacity-100 transition-opacity absolute right-4">chevron_right</span>
+</button>
+</div>
+<!-- Simulated Console Log / Loader (Bottom) -->
+<div class="w-full max-w-md mt-12 bg-[#111722]/90 border border-[#232f48] rounded p-4 font-mono text-xs text-[#92a4c9] shadow-lg backdrop-blur relative overflow-hidden h-32">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+<div class="flex flex-col gap-1.5 h-full overflow-hidden">
+<div class="flex justify-between text-primary/80">
+<span>&gt; INITIALIZING HANDSHAKE...</span>
+<span>DONE</span>
+</div>
+<div class="flex justify-between">
+<span>&gt; DECRYPTING GENOMIC SEQUENCES...</span>
+<span class="animate-pulse text-yellow-500">BUSY</span>
+</div>
+<div class="flex justify-between text-white/40">
+<span>&gt; VERIFYING BIOMETRICS...</span>
+<span>WAITING</span>
+</div>
+<div class="flex justify-between text-white/20">
+<span>&gt; ESTABLISHING SECURE TUNNEL...</span>
+<span>PENDING</span>
+</div>
+<!-- Progress Bar integrated -->
+<div class="mt-auto pt-2">
+<div class="flex justify-between mb-1 text-[10px] text-white/60">
+<span>SYSTEM LOAD</span>
+<span>42%</span>
+</div>
+<div class="h-1 w-full bg-[#232f48] rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[42%] shadow-[0_0_10px_#135bec]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer / Legal -->
+<footer class="w-full border-t border-[#232f48] bg-[#0c1018] px-6 py-4 z-20">
+<div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2 text-[#566583] text-[10px] md:text-xs font-mono max-w-2xl text-center md:text-left leading-tight">
+<span class="material-symbols-outlined text-base">gavel</span>
+<p>WARNING: UNAUTHORIZED ACCESS TO BIOSYN PROPRIETARY DATA IS A VIOLATION OF INTERNATIONAL GENETIC TREATIES. ALL ACTIVITIES ARE LOGGED AND TRACED.</p>
+</div>
+<div class="text-[#3e4c66] text-[10px] font-mono tracking-widest">
+                    SESSION_ID: <span class="text-[#566583]">8X99-22B-OMEGA</span>
+</div>
+</div>
+</footer>
+</div>
+<!-- Tailwind Config for Shimmer Animation needed for button -->
+<style>
+        @keyframes shimmer {
+            100% {
+                transform: translateX(200%);
+            }
+        }
+    </style>
+</body></html>
